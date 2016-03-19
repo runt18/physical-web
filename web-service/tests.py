@@ -63,9 +63,9 @@ class PwsTest(unittest.TestCase):
 
         """
         JSON = getattr(self, 'JSON', False)
-        url = '{}/{}'.format(self.HOST, self.PATH)
+        url = '{0}/{1}'.format(self.HOST, self.PATH)
         if params:
-            url += '?{}'.format(urllib.urlencode(params))
+            url += '?{0}'.format(urllib.urlencode(params))
         args = [url]
         if payload is not None:
             args.append(json.dumps(payload))
@@ -185,12 +185,12 @@ class TestResolveScan(PwsTest):
         result = self.call({
             'objects': [
                 {
-                    'url': '{}/experimental/googl/KYvLwO'.format(self.HOST),
+                    'url': '{0}/experimental/googl/KYvLwO'.format(self.HOST),
                     'rssi': -41,
                     'txpower': -22
                 },
                 {
-                    'url': '{}/experimental/googl/r8iJqW'.format(self.HOST),
+                    'url': '{0}/experimental/googl/r8iJqW'.format(self.HOST),
                     'rssi': -91,
                     'txpower': -22
                 },
@@ -290,7 +290,7 @@ class TestGo(PwsTest):
 def main():
     """The main routine."""
     # Parse arguments
-    local_url = 'http://localhost:{}'.format(LOCAL_TEST_PORT)
+    local_url = 'http://localhost:{0}'.format(LOCAL_TEST_PORT)
     parser = argparse.ArgumentParser(description='Run web-service tests')
     parser.add_argument(
             '-e', '--endpoint', dest='endpoint', default='auto',
@@ -321,7 +321,7 @@ def main():
             if 'Unable to bind' in line:
                 print 'Rogue server already running.'
                 return 1
-            if 'running at: {}'.format(local_url) in line:
+            if 'running at: {0}'.format(local_url) in line:
                 break
         print 'done'
     elif endpoint.lower() == 'local':
